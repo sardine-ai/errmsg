@@ -29,7 +29,7 @@ func TestJsonTypeErrorForNestedField(t *testing.T) {
 	var u user
 	input := `{"birthday": {"month": ""}}`
 	err := json.Unmarshal([]byte(input), &u)
-	errmsg_testing.AssertEquals(t, errmsg.Message(err), `"birthday.month" should be int8 but received string`)
+	errmsg_testing.AssertEquals(t, errmsg.Message(err), `"birthday.month" should be integer but received string`)
 }
 
 func TestJsonTypeErrorForNestedFieldOverflow(t *testing.T) {
