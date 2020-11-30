@@ -3,12 +3,19 @@ package errmsg
 import (
 	"encoding/json"
 	"github.com/daisy1754/errmsg/errors"
+	"github.com/go-playground/validator/v10"
 )
 
 // Wrap tries to wrap known json syntax/parse/validation error into custom error type that provides better error message
 func Wrap(err error) error {
+	// encoding/json
 	if typeErr, ok := err.(*json.UnmarshalTypeError); ok {
 		return &errors.JSONTypeError{Cause: typeErr}
+	}
+
+	// go-playground/validator
+	if validationErrs, ok := err.(validator.ValidationErrors); ok && len(validationErrs) > 0 {
+		return &errors.GPValidatorError{Cause: validationErrs}
 	}
 	return err
 }
