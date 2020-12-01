@@ -1,4 +1,6 @@
 version: 2.1
+orbs:
+  codecov: codecov/codecov@1.1.1
 jobs:
   build:
     docker:
@@ -11,8 +13,10 @@ jobs:
           keys:
             - v1-pkg-cache
       - run: go build -v ./...
-      - run: go test -v ./...
+      - run: go test -coverprofile=coverage.profile -v ./...
       - save_cache:
           key: v1-pkg-cache
           paths:
             - "/go/pkg"
+      - codecov/upload:
+          file: coverage.profile
