@@ -12,6 +12,9 @@ func Wrap(err error) error {
 	if typeErr, ok := err.(*json.UnmarshalTypeError); ok {
 		return &errors.JSONTypeError{Cause: typeErr}
 	}
+	if syntaxErr, ok := err.(*json.SyntaxError); ok {
+		return &errors.JSONSyntaxError{Cause: syntaxErr}
+	}
 
 	// go-playground/validator
 	if validationErrs, ok := err.(validator.ValidationErrors); ok && len(validationErrs) > 0 {

@@ -24,7 +24,6 @@ func TestJsonTypeError(t *testing.T) {
 	errmsg_testing.AssertEquals(t, errmsg.Message(err), `'id' should be string but received number`)
 }
 
-
 func TestJsonTypeErrorForNestedField(t *testing.T) {
 	var u user
 	input := `{"birthday": {"month": ""}}`
@@ -37,4 +36,11 @@ func TestJsonTypeErrorForNestedFieldOverflow(t *testing.T) {
 	input := `{"birthday": {"month": 4294967296}}`
 	err := json.Unmarshal([]byte(input), &u)
 	errmsg_testing.AssertEquals(t, errmsg.Message(err), `'birthday.month' should be int8 but received number 4294967296`)
+}
+
+func TestInvalidJsonError(t *testing.T) {
+	var u user
+	input := `{"id": }`
+	err := json.Unmarshal([]byte(input), &u)
+	errmsg_testing.AssertHasPrefix(t, errmsg.Message(err), "JSON syntax error")
 }
