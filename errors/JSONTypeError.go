@@ -19,7 +19,7 @@ func (e *JSONTypeError) Error() string {
 		expectedType = "integer"
 	}
 	if typeErr.Field != "" {
-		return fmt.Sprintf(`"%v" should be %s but received %s`, typeErr.Field, expectedType, actualValue)
+		return fmt.Sprintf(`'%v' should be %s but received %s`, typeErr.Field, expectedType, actualValue)
 	}
 	return fmt.Sprintf("expected %s but received %s", expectedType, actualValue)
 }

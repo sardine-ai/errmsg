@@ -15,7 +15,7 @@ func (e *GPValidatorError) Error() string {
 	switch e.Cause[0].Tag() {
 	case "required":
 		// TODO get json tag not struct field name
-		return fmt.Sprintf(`"%s" is a required field`, e.Cause[0].Field())
+		return fmt.Sprintf(`'%s' is a required field`, e.Cause[0].Field())
 	default:
 		return e.Cause.Error()
 	}

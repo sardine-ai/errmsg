@@ -7,10 +7,10 @@ The idea is to provide error message that is more friendly for consumer of your 
 
 For instance, instead of 
 `Key: 'request.UserID' Error:Field validation for 'UserID' failed on the 'required' tag` (error message from go-playground/validator),
-this library would say `"UserID" is a required field`. 
+this library would say `'UserID' is a required field`. 
 
 Or instead of `json: cannot unmarshal string into Go struct field birthday.birthday.month of type int8` (error message from json pkg)
- this library says `"birthday.month" should be integer but received string`.
+ this library says `'birthday.month' should be integer but received string`.
 
 ### Usage
 
