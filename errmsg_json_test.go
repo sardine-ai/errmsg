@@ -2,6 +2,7 @@ package errmsg_test
 
 import (
 	"encoding/json"
+	"errors"
 	"github.com/daisy1754/errmsg"
 	errmsg_testing "github.com/daisy1754/errmsg/testing"
 	"testing"
@@ -22,6 +23,7 @@ func TestJsonTypeError(t *testing.T) {
 	input := `{"id": 1}`
 	err := json.Unmarshal([]byte(input), &u)
 	errmsg_testing.AssertEquals(t, errmsg.Message(err), `'id' should be string but received number`)
+	errmsg_testing.AssertType(t, errors.Unwrap(errmsg.Wrap(err)), &json.UnmarshalTypeError{})
 }
 
 func TestJsonTypeErrorForNestedField(t *testing.T) {
@@ -43,4 +45,5 @@ func TestInvalidJsonError(t *testing.T) {
 	input := `{"id": }`
 	err := json.Unmarshal([]byte(input), &u)
 	errmsg_testing.AssertHasPrefix(t, errmsg.Message(err), "JSON syntax error")
+	errmsg_testing.AssertType(t, errors.Unwrap(errmsg.Wrap(err)), &json.SyntaxError{})
 }
