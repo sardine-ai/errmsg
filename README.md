@@ -1,5 +1,6 @@
 # errmsg
 [![CircleCI](https://circleci.com/gh/daisy1754/errmsg.svg?style=svg)](https://circleci.com/gh/daisy1754/errmsg)
+[![codecov](https://codecov.io/gh/daisy1754/errmsg/branch/master/graph/badge.svg?token=NSE90I0AVQ)](https://codecov.io/gh/daisy1754/errmsg)
 
 This library wraps errors from golang's [json package](https://golang.org/pkg/encoding/json)
 and famous [go-playground/validator](https://github.com/go-playground/validator) library. 
