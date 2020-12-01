@@ -1,11 +1,18 @@
-version: 2
+version: 2.1
 jobs:
   build:
     docker:
-      - image: cimg/go:1.13
+      - image: circleci/golang:1.15
 
     working_directory: /go/src/github.com/daisy1754/errmsg
     steps:
       - checkout
-      - run: go get -v -t -d ./...
+      - restore_cache:
+          keys:
+            - v1-pkg-cache
+      - run: go build -v ./...
       - run: go test -v ./...
+      - save_cache:
+          key: v1-pkg-cache
+          paths:
+            - "/go/pkg"
