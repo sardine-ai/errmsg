@@ -6,12 +6,10 @@ This library wraps errors from golang's [json package](https://golang.org/pkg/en
 and famous [go-playground/validator](https://github.com/go-playground/validator) library. 
 The idea is to provide error message that is more friendly for consumer of your json APIs.
 
-For instance, instead of 
-`Key: 'request.UserID' Error:Field validation for 'UserID' failed on the 'required' tag` (error message from go-playground/validator),
-this library would say `'UserID' is a required field`. 
-
-Or instead of `json: cannot unmarshal string into Go struct field birthday.birthday.month of type int8` (error message from json pkg)
+For instance, instead of `json: cannot unmarshal string into Go struct field birthday.birthday.month of type int8` (error message from json pkg)
  this library says `'birthday.month' should be integer but received string`.
+
+Note for go-playground/validator one can just use translation: eg https://github.com/go-playground/validator/blob/master/_examples/translations/main.go
 
 ### Usage
 
