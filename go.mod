@@ -1,4 +1,4 @@
-module github.com/daisy1754/errmsg
+module github.com/sardine-ai/errmsg
 
 go 1.14
 

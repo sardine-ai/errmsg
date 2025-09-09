@@ -2,7 +2,7 @@ package errmsg
 
 import (
 	"encoding/json"
-	"github.com/daisy1754/errmsg/errors"
+	"github.com/sardine-ai/errmsg/errors"
 	"github.com/go-playground/validator/v10"
 )
 

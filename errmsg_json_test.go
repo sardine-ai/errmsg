@@ -3,8 +3,8 @@ package errmsg_test
 import (
 	"encoding/json"
 	"errors"
-	"github.com/daisy1754/errmsg"
-	errmsg_testing "github.com/daisy1754/errmsg/testing"
+	"github.com/sardine-ai/errmsg"
+	errmsg_testing "github.com/sardine-ai/errmsg/testing"
 	"testing"
 )
 

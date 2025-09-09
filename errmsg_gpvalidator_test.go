@@ -7,8 +7,8 @@ import (
 
 	"bytes"
 
-	"github.com/daisy1754/errmsg"
-	errmsg_testing "github.com/daisy1754/errmsg/testing"
+	"github.com/sardine-ai/errmsg"
+	errmsg_testing "github.com/sardine-ai/errmsg/testing"
 	"github.com/go-playground/validator/v10"
 )
 
