@@ -13,6 +13,9 @@ type JSONTypeError struct {
 func (e *JSONTypeError) Error() string {
 	typeErr := e.Cause
 	expectedType := typeErr.Type.Name()
+	if expectedType == "" {
+		expectedType = typeErr.Type.String()
+	}
 	actualValue := typeErr.Value
 	if isIntType(expectedType) && actualValue == "string" {
 		// instead of saying 'int64' etc, let's just say 'integer'
@@ -31,7 +34,7 @@ func (e *JSONTypeError) Unwrap() error {
 func isIntType(typeName string) bool {
 	return typeName == "int" || typeName == "unit" ||
 		typeName == "int8" || typeName == "unit8" ||
-		typeName == "int16" || typeName == "unit16"||
-		typeName == "int32" || typeName == "unit32"||
+		typeName == "int16" || typeName == "unit16" ||
+		typeName == "int32" || typeName == "unit32" ||
 		typeName == "int64" || typeName == "unit64"
 }
